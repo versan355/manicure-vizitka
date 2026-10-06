@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Маникюр у Ирины</title>
+<meta name="description" content="Маникюр и педикюр у мастера на дому. Запись по телефону.">
+<!--
+  ЧТО ЗАМЕНИТЬ НА НАСТОЯЩЕЕ (ищите по тексту):
+  1. Имя мастера: «Ирина»
+  2. Телефон: «+7 900 000-00-00» и «+79000000000» (в ссылках tel: и WhatsApp)
+  3. Адрес: «Москва, ул. Садовая, 12» и подсказка, как пройти
+  4. Услуги и цены — в разделе «Услуги и цены»
+  5. Часы работы — в разделе «Когда принимаю»
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --porcelain: #EEF0EC;   /* фон: светлый, чуть зеленоватый */
+    --paper:     #F8F9F6;
+    --ink:       #33262E;   /* текст: глубокий сливовый */
+    --ink-soft:  #6B5C64;
+    --sage:      #6F806B;   /* шалфей: ссылки, кнопка */
+    --mauve:     #A68593;   /* приглушённый лиловый лак */
+    --sand:      #D8CDBF;
+    --line:      #D3D6CF;
+    --plum:      #33262E;   /* тёмный лак */
+    --lilac:     #C9B6BD;
+    --btn:       #33262E;
+    --btn-text:  #F8F9F6;
+    --skin:      #E9D6C8;
+    --nude:      #E4CFC6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --porcelain: #1E1A1C; --paper: #29232A; --ink: #EDE7E9; --ink-soft: #B5A8AE;
+      --sage: #A3B69D; --mauve: #BFA0AD; --sand: #6E6158; --line: #3A3237;
+      --plum: #5C4652; --lilac: #8E7A83; --btn: #BFA0AD; --btn-text: #1E1A1C; --skin: #CDB2A2; --nude: #E0C9BF;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --porcelain: #1E1A1C; --paper: #29232A; --ink: #EDE7E9; --ink-soft: #B5A8AE;
+    --sage: #A3B69D; --mauve: #BFA0AD; --sand: #6E6158; --line: #3A3237;
+    --plum: #5C4652; --lilac: #8E7A83; --btn: #BFA0AD; --btn-text: #1E1A1C; --skin: #CDB2A2; --nude: #E0C9BF;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--porcelain);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 "Manrope", system-ui, sans-serif;
+    overflow-wrap: break-word;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: var(--sage); }
+  a:focus-visible, .call:focus-visible {
+    outline: 3px solid var(--mauve);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .wrap { width: 100%; max-width: 34rem; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Первый экран ---------- */
+  .hero { padding-top: 40px; padding-bottom: 36px; }
+  .swatches {
+    display: flex; gap: 10px; margin-bottom: 30px;
+    max-width: 100%;
+  }
+  .nail {
+    flex: 0 1 46px; aspect-ratio: 46 / 64;
+    border-radius: 50% 50% 46% 46% / 62% 62% 38% 38%;
+    box-shadow: inset 0 -6px 0 rgba(255,255,255,.18), inset 6px 8px 10px rgba(255,255,255,.28);
+    transform-origin: 50% 100%;
+    animation: paint .7s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .nail:nth-child(1) { background: var(--sand);  animation-delay: .05s; }
+  .nail:nth-child(2) { background: var(--mauve); animation-delay: .15s; }
+  .nail:nth-child(3) { background: var(--plum);   animation-delay: .25s; }
+  .nail:nth-child(4) { background: var(--sage);  animation-delay: .35s; }
+  .nail:nth-child(5) { background: var(--lilac); animation-delay: .45s; }
+  @keyframes paint { from { transform: scaleY(0); opacity: 0; } to { transform: none; opacity: 1; } }
+
+  h1 {
+    font: 400 clamp(2.4rem, 11vw, 3.5rem)/1.02 "Yeseva One", Georgia, serif;
+    margin: 0 0 14px; letter-spacing: -.01em;
+  }
+  .lead { margin: 0 0 26px; color: var(--ink-soft); font-size: 1.125rem; max-width: 26em; }
+
+  .call {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    width: 100%; min-height: 60px; padding: 14px 20px;
+    background: var(--btn); color: var(--btn-text);
+    border-radius: 999px; text-decoration: none;
+    font-weight: 700; font-size: 1.25rem; letter-spacing: .01em;
+  }
+  .call svg { width: 22px; height: 22px; flex: none; }
+  .call:active { transform: scale(.98); }
+  .alt { margin: 14px 0 0; text-align: center; font-size: .98rem; color: var(--ink-soft); }
+
+  /* ---------- Разделы ---------- */
+  section { padding: 34px 0; border-top: 1px solid var(--line); }
+  h2 { font: 400 1.75rem/1.15 "Yeseva One", Georgia, serif; margin: 0 0 18px; }
+
+  .prices { list-style: none; margin: 0; padding: 0; }
+  .prices li {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 11px 0;
+  }
+  .prices .name { flex: 0 1 auto; min-width: 0; }
+  .prices .name small { display: block; color: var(--ink-soft); font-size: .9rem; line-height: 1.4; }
+  .prices .dots { flex: 1 1 12px; border-bottom: 2px dotted var(--sand); transform: translateY(-5px); min-width: 12px; }
+  .prices .cost { flex: none; font-weight: 700; white-space: nowrap; }
+  .note { margin: 18px 0 0; color: var(--ink-soft); font-size: .95rem; }
+
+  .address {
+    font: 400 1.5rem/1.25 "Yeseva One", Georgia, serif; margin: 0 0 8px;
+  }
+  .how { margin: 0 0 16px; color: var(--ink-soft); }
+  .map-link { font-weight: 700; }
+
+  .hours { display: grid; grid-template-columns: auto 1fr; gap: 6px 20px; margin: 0; }
+  .hours dt { color: var(--ink-soft); }
+  .hours dd { margin: 0; font-weight: 500; }
+
+  .care { background: var(--paper); border-radius: 22px; padding: 22px 20px; border-top: 0; margin: 8px 0 0; }
+  .care h2 { font-size: 1.4rem; margin-bottom: 10px; }
+  .care p { margin: 0; }
+
+  footer.wrap { padding-top: 36px; padding-bottom: 48px; text-align: center; }
+  footer .call { margin-bottom: 12px; }
+  footer p { margin: 0; color: var(--ink-soft); font-size: .9rem; }
+
+  /* ---------- Варианты покрытия ---------- */
+  .works { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .work { margin: 0; }
+  .work svg {
+    width: 100%; height: auto; aspect-ratio: 1; max-width: 100%;
+    background: var(--paper); border-radius: 18px;
+  }
+  .work figcaption { margin-top: 8px; font-size: .95rem; color: var(--ink-soft); line-height: 1.35; }
+
+  /* ---------- Окно записи ---------- */
+  button.call { border: 0; font-family: inherit; cursor: pointer; }
+  .book {
+    width: min(100% - 32px, 26rem); max-width: 100%;
+    border: 0; border-radius: 24px; padding: 26px 22px 22px;
+    background: var(--paper); color: var(--ink);
+  }
+  .book::backdrop { background: rgba(30, 22, 27, .55); }
+  .book h2 { margin: 0 0 6px; font-size: 1.5rem; }
+  .book .num {
+    font: 700 1.75rem/1.2 "Manrope", system-ui, sans-serif;
+    font-variant-numeric: tabular-nums; margin: 0 0 18px;
+    user-select: all; -webkit-user-select: all;
+  }
+  .book .acts { display: grid; gap: 10px; }
+  .book .act {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 52px; padding: 12px 16px; border-radius: 999px;
+    font: 700 1.0625rem/1.2 "Manrope", system-ui, sans-serif;
+    text-decoration: none; cursor: pointer;
+    border: 2px solid var(--line); background: transparent; color: var(--ink);
+  }
+  .book .act.main { background: var(--btn); color: var(--btn-text); border-color: var(--btn); }
+  .book .act:focus-visible { outline: 3px solid var(--mauve); outline-offset: 3px; }
+  .book .status { min-height: 1.6em; margin: 12px 0 0; text-align: center; color: var(--sage); font-weight: 500; }
+  .book .close {
+    display: block; margin: 8px auto 0; padding: 8px 14px;
+    background: none; border: 0; color: var(--ink-soft);
+    font: 500 1rem "Manrope", system-ui, sans-serif; cursor: pointer; text-decoration: underline;
+  }
+
+  @media (prefers-reduced-motion: reduce) { .nail { animation: none; } }
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <div class="swatches" aria-hidden="true">
+    <span class="nail"></span><span class="nail"></span><span class="nail"></span><span class="nail"></span><span class="nail"></span>
+  </div>
+  <h1>Маникюр у Ирины</h1>
+  <p class="lead">Принимаю у себя дома, в соседнем дворе. Спокойно, без спешки и очередей, один клиент за раз.</p>
+  <button type="button" class="call" data-book>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+    +7 900 000-00-00
+  </button>
+  <p class="alt">Позвоните или напишите в <a href="https://wa.me/79000000000">WhatsApp</a></p>
+</header>
+
+<main class="wrap">
+
+  <section aria-labelledby="price-h">
+    <h2 id="price-h">Услуги и цены</h2>
+    <ul class="prices">
+      <li><span class="name">Маникюр без покрытия</span><span class="dots"></span><span class="cost">800 ₽</span></li>
+      <li><span class="name">Маникюр с покрытием гель&#8209;лаком<small>однотонное, снятие старого покрытия входит</small></span><span class="dots"></span><span class="cost">1 600 ₽</span></li>
+      <li><span class="name">Укрепление ногтей гелем</span><span class="dots"></span><span class="cost">+300 ₽</span></li>
+      <li><span class="name">Френч или простой дизайн</span><span class="dots"></span><span class="cost">+200 ₽</span></li>
+      <li><span class="name">Педикюр с покрытием</span><span class="dots"></span><span class="cost">2 000 ₽</span></li>
+      <li><span class="name">Снятие покрытия без нового</span><span class="dots"></span><span class="cost">300 ₽</span></li>
+    </ul>
+    <p class="note">Маникюр с покрытием занимает около двух часов.</p>
+  </section>
+
+  <section aria-labelledby="works-h">
+    <h2 id="works-h">Варианты покрытия</h2>
+    <!-- Сюда можно поставить фото настоящих работ вместо рисунков -->
+    <div class="works">
+      <figure class="work">
+        <svg viewBox="0 0 120 120" role="img" aria-label="Однотонное покрытие"><rect x="14" y="34" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="46" y="18" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="78" y="30" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="18" y="39" width="20" height="28" rx="10" fill="var(--sage)"/><rect x="50" y="23" width="20" height="28" rx="10" fill="var(--sage)"/><rect x="82" y="35" width="20" height="28" rx="10" fill="var(--sage)"/><rect x="23" y="45" width="4" height="12" rx="2" fill="#fff" opacity=".35"/><rect x="55" y="29" width="4" height="12" rx="2" fill="#fff" opacity=".35"/><rect x="87" y="41" width="4" height="12" rx="2" fill="#fff" opacity=".35"/></svg>
+        <figcaption>Однотонное покрытие</figcaption>
+      </figure>      <figure class="work">
+        <svg viewBox="0 0 120 120" role="img" aria-label="Френч"><defs><clipPath id="fr-clip"><rect x="18" y="39" width="20" height="28" rx="10"/><rect x="50" y="23" width="20" height="28" rx="10"/><rect x="82" y="35" width="20" height="28" rx="10"/></clipPath></defs><rect x="14" y="34" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="46" y="18" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="78" y="30" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="18" y="39" width="20" height="28" rx="10" fill="var(--nude)"/><rect x="50" y="23" width="20" height="28" rx="10" fill="var(--nude)"/><rect x="82" y="35" width="20" height="28" rx="10" fill="var(--nude)"/><rect x="18" y="39" width="20" height="8" fill="#FBFAF8" clip-path="url(#fr-clip)"/><rect x="50" y="23" width="20" height="8" fill="#FBFAF8" clip-path="url(#fr-clip)"/><rect x="82" y="35" width="20" height="8" fill="#FBFAF8" clip-path="url(#fr-clip)"/><rect x="23" y="45" width="4" height="12" rx="2" fill="#fff" opacity=".35"/><rect x="55" y="29" width="4" height="12" rx="2" fill="#fff" opacity=".35"/><rect x="87" y="41" width="4" height="12" rx="2" fill="#fff" opacity=".35"/></svg>
+        <figcaption>Френч</figcaption>
+      </figure>      <figure class="work">
+        <svg viewBox="0 0 120 120" role="img" aria-label="Омбре"><defs><linearGradient id="omb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--mauve)"/><stop offset="1" stop-color="var(--nude)"/></linearGradient></defs><rect x="14" y="34" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="46" y="18" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="78" y="30" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="18" y="39" width="20" height="28" rx="10" fill="url(#omb)"/><rect x="50" y="23" width="20" height="28" rx="10" fill="url(#omb)"/><rect x="82" y="35" width="20" height="28" rx="10" fill="url(#omb)"/><rect x="23" y="45" width="4" height="12" rx="2" fill="#fff" opacity=".35"/><rect x="55" y="29" width="4" height="12" rx="2" fill="#fff" opacity=".35"/><rect x="87" y="41" width="4" height="12" rx="2" fill="#fff" opacity=".35"/></svg>
+        <figcaption>Омбре</figcaption>
+      </figure>      <figure class="work">
+        <svg viewBox="0 0 120 120" role="img" aria-label="Минималистичный дизайн"><rect x="14" y="34" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="46" y="18" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="78" y="30" width="28" height="120" rx="14" fill="var(--skin)"/><rect x="18" y="39" width="20" height="28" rx="10" fill="var(--nude)"/><rect x="50" y="23" width="20" height="28" rx="10" fill="var(--nude)"/><rect x="82" y="35" width="20" height="28" rx="10" fill="var(--nude)"/><rect x="22" y="58" width="12" height="1.8" rx=".9" fill="var(--plum)"/><rect x="50" y="23" width="20" height="28" rx="10" fill="var(--plum)"/><rect x="86" y="54" width="12" height="1.8" rx=".9" fill="var(--plum)"/><rect x="23" y="45" width="4" height="12" rx="2" fill="#fff" opacity=".35"/><rect x="55" y="29" width="4" height="12" rx="2" fill="#fff" opacity=".35"/><rect x="87" y="41" width="4" height="12" rx="2" fill="#fff" opacity=".35"/></svg>
+        <figcaption>Минималистичный дизайн</figcaption>
+      </figure>    </div>
+  </section>
+
+  <section aria-labelledby="addr-h">
+    <h2 id="addr-h">Где принимаю</h2>
+    <p class="address">Москва, ул.&nbsp;Садовая,&nbsp;12</p>
+    <p class="how">Второй подъезд, третий этаж. Точный номер квартиры скажу при записи.</p>
+    <a class="map-link" href="https://yandex.ru/maps/?text=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%A1%D0%B0%D0%B4%D0%BE%D0%B2%D0%B0%D1%8F%2C%2012">Открыть на карте</a>
+  </section>
+
+  <section aria-labelledby="hours-h">
+    <h2 id="hours-h">Когда принимаю</h2>
+    <dl class="hours">
+      <dt>Пн–Пт</dt><dd>10:00–20:00</dd>
+      <dt>Суббота</dt><dd>10:00–16:00</dd>
+      <dt>Воскресенье</dt><dd>выходной</dd>
+    </dl>
+  </section>
+
+  <section class="care" aria-labelledby="care-h">
+    <h2 id="care-h">О чистоте</h2>
+    <p>Инструменты после каждого клиента проходят стерилизацию в сухожаре, пилки и бафы одноразовые.</p>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <button type="button" class="call" data-book>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+    Записаться
+  </button>
+  <p>Москва, ул. Садовая, 12<br>+7 900 000-00-00</p>
+</footer>
+
+
+<dialog class="book" id="book" aria-labelledby="book-h">
+  <h2 id="book-h">Записаться к Ирине</h2>
+  <p class="num" id="book-num">+7 900 000-00-00</p>
+  <div class="acts">
+    <button type="button" class="act main" id="copy-btn">Скопировать номер</button>
+    <a class="act" href="tel:+79000000000">Позвонить</a>
+    <a class="act" href="https://wa.me/79000000000" target="_blank" rel="noopener">Написать в WhatsApp</a>
+  </div>
+  <p class="status" id="book-status" role="status"></p>
+  <button type="button" class="close" id="book-close">Закрыть</button>
+</dialog>
+
+<script>
+  (function () {
+    var dlg = document.getElementById('book');
+    var status = document.getElementById('book-status');
+    var num = document.getElementById('book-num');
+    document.querySelectorAll('[data-book]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        status.textContent = '';
+        if (dlg.showModal) dlg.showModal(); else dlg.setAttribute('open', '');
+      });
+    });
+    document.getElementById('book-close').addEventListener('click', function () { dlg.close ? dlg.close() : dlg.removeAttribute('open'); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg && dlg.close) dlg.close(); });
+    function selectNum() {
+      var r = document.createRange(); r.selectNodeContents(num);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+    document.getElementById('copy-btn').addEventListener('click', function () {
+      var text = '+79000000000';
+      var ok = function () { status.textContent = 'Номер скопирован. Вставьте его в телефон или мессенджер.'; };
+      var fail = function () { selectNum(); status.textContent = 'Номер выделен. Скопируйте его долгим нажатием.'; };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fail);
+        else fail();
+      } catch (e) { fail(); }
+    });
+  })();
+</script>
+
+</body>
+</html>
